@@ -1,0 +1,23 @@
+<div class="example-container mat-elevation-z8">
+  <h2>Competition Details</h2>
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/competitions']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{competition.name}}</h2></mat-card-title>
+      <mat-card-subtitle>{{competition.country}}</mat-card-subtitle>
+      <mat-card-subtitle>{{competition.startDate}}</mat-card-subtitle>
+      <mat-card-subtitle>{{competition.endDate}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [routerLink]="['/edit-competition', competition.id]"><mat-icon>edit</mat-icon> Competition</a>
+      <a mat-flat-button color="warn" (click)="deleteCompetition(competition.id)"><mat-icon>delete</mat-icon> Competition</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

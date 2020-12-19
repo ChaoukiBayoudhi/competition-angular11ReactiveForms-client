@@ -1,0 +1,58 @@
+<div class="example-container mat-elevation-z8">
+  <h2>Add New Competition</h2>
+  <div class="example-loading-shade"
+        *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/competitions']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="competitionForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name"
+                [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!competitionForm.controls['name']?.valid && competitionForm.controls['name']?.touched">Please enter Competetion Name</span>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Country</mat-label>
+        <input matInput placeholder="Country" formControlName="country"
+                [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!competitionForm.controls['country']?.valid && competitionForm.controls['country']?.touched">Please enter Country</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+        [matDatepicker]="startDate"
+        formControlName="startDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+
+<!--
+<mat-form-field>
+  <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="startDate"
+    [min]="minDate" [max]="maxDate" [disabled]="disabled">
+  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+  <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds" [stepHour]="stepHour"
+    [stepMinute]="stepMinute" [stepSecond]="stepSecond" [touchUi]="touchUi" [color]="color"
+    [enableMeridian]="enableMeridian" [disableMinute]="disableMinute" [hideTime]="hideTime">
+  </ngx-mat-datetime-picker>
+
+</mat-form-field>
+-->
+      <div class="button-row">
+        <button type="submit" [disabled]="!competitionForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
