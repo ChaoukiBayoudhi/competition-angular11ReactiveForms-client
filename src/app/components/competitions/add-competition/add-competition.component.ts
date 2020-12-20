@@ -34,12 +34,12 @@ export class AddCompetitionComponent implements OnInit {
       name: ['', Validators.required],
       country: ['', Validators.required],
       startDate: [new Date(), Validators.required],
-      endDate:  [null]
+      endDate:  [new Date()]
   });
   }
   onSubmit(): void {
     const body = this.competitionForm.value;
-    // body.startDate   = this.pipe.transform(body.startDate, 'yyyy-MM-dd HH:mm');
+    body.startDate   = this.pipe.transform(body.startDate, 'yyyy-MM-dd HH:mm');
     this.isLoadingResults = true;
     this.service.addCompetition(body)
       .subscribe((res: Competition) => {
