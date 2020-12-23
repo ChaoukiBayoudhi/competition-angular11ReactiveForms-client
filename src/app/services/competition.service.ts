@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
+import { Statistic } from '../classes/statistic';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -53,7 +54,7 @@ export class CompetitionService {
     const url = `${apiUrl}` + '/competition' + `/${id}`;
     return this.http.put(url, competition, httpOptions).pipe(
       tap(c => console.log(`updated Competition id=${id}`)),
-      catchError(this.handleError<any>('updateCompetition'))
+      catchError(this.handleError<Competition>('updateCompetition'))
     );
   }
 
@@ -62,6 +63,14 @@ export class CompetitionService {
     return this.http.delete<Competition>(url, httpOptions).pipe(
       tap(c => console.log(`deleted Competition id=${id}`)),
       catchError(this.handleError<Competition>('deleteCompetition'))
+    );
+  }
+
+  getStatistic(compName: string): Observable<Statistic> {
+    const url = `${apiUrl}/statistics/${compName}`;
+    return this.http.get<Statistic>(url).pipe(
+      tap(_ => console.log(`fetched statistic status=${status}`)),
+      catchError(this.handleError<Statistic>(`getStatistic status=${status}`))
     );
   }
 }

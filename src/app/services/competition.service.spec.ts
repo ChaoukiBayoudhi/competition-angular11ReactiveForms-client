@@ -14,3 +14,4 @@ describe('CompetitionService', () => {
     expect(service).toBeTruthy();
   });
 });
+

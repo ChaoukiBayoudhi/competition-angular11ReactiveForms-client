@@ -12,6 +12,7 @@ import { AddCompetitionComponent } from './components/competitions/add-competiti
 import { EditCompetitionComponent } from './components/competitions/edit-competition/edit-competition.component';
 import { CompetitionDetailsComponent } from './components/competitions/competition-details/competition-details.component';
 import { CompetitionStatisticsComponent } from './components/competitions/competition-statistics/competition-statistics.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

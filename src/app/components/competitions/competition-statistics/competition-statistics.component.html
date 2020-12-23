@@ -1,1 +1,30 @@
-<p>competition-statistics works!</p>
+<div class="example-container mat-elevation-z8">
+  <h2>Competition Statistic</h2>
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/cases']"><mat-icon>list</mat-icon></a>
+  </div>
+  <div class="button-row">
+      <mat-form-field>
+        <mat-select placeholder="Competition Name" [(ngModel)]="selectedName" (ngModelChange)="changeStatus()">
+          <mat-option *ngFor="let name of competitionNames" [value]="name">
+            {{ name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>(ngModelChange) event</mat-hint>
+      </mat-form-field>
+  </div>
+  <div style="display: block;">
+    <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>
