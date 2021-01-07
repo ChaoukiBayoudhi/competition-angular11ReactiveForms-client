@@ -37,6 +37,16 @@
         </mat-error>
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      <mat-error>
+          <span *ngIf="!competitionForm.controls['endDate']?.valid && competitionForm.controls['endDate']?.touched">Please enter the end Date</span>
+        </mat-error>
+      </mat-form-field>
+
 <!--
 <mat-form-field>
   <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="startDate"

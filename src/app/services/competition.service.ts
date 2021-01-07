@@ -45,7 +45,7 @@ export class CompetitionService {
 
   addCompetition(competition: Competition): Observable<Competition> {
     return this.http.post<Competition>(apiUrl + '/newcompetition', competition, httpOptions).pipe(
-      tap((c: Competition) => console.log(`added Competition w/ id=${c.id}`)),
+      tap((c: Competition) => console.log(`added Competition id=${c.id}`)),
       catchError(this.handleError<Competition>('addCompetition'))
     );
   }

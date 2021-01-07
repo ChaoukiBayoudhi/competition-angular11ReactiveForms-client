@@ -40,6 +40,7 @@ export class AddCompetitionComponent implements OnInit {
   onSubmit(): void {
     const body = this.competitionForm.value;
     body.startDate   = this.pipe.transform(body.startDate, 'yyyy-MM-dd HH:mm');
+    body.endDate   = this.pipe.transform(body.endDate, 'yyyy-MM-dd HH:mm');
     this.isLoadingResults = true;
     this.service.addCompetition(body)
       .subscribe((res: Competition) => {
