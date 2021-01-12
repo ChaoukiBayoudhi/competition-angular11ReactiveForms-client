@@ -12,7 +12,7 @@ import { CompetitionService } from 'src/app/services/competition.service';
 })
 export class CompetitionStatisticsComponent implements OnInit {
   tab: Statistic[] = [];
-  selectedName = 'world cup';
+  selectedName = 'competition1';
   isLoadingResults = true;
   isLoadingResults1 = true;
 
@@ -39,6 +39,8 @@ export class CompetitionStatisticsComponent implements OnInit {
     this.service.getStatistic(name)
     .subscribe((res: any) => {
       this.tab = res;
+      this.isLoadingResults = false;
+      console.log(this.tab);
       const chartdata: number[] = [];
       const chartcolor: string[] = [];
       this.tab.forEach((tab) => {
